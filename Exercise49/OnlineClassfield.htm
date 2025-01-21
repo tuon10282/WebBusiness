@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Tiêu đề trang</title>
+    <script>
+        function handle() {
+            alert("Search Simulation");
+        }
+    </script>
+</head>
+<body style="background-color: #ccffff;">
+    <h1 style="color:red">Online Classfields Search Form</h1>
+    <hr/>
+    <form id="searchForm">
+        <h3>1) Search for a classfields in the following sections</h3>
+        <table>
+            <tr>
+                <td><input type="radio" id="Employment" name="section" value="Employment">
+                    <label for="Employment">Employment</label></td>
+                <td><input type="radio" id="Personal" name="section" value="Personal">
+                    <label for="Personal">Personal</label></td>
+            </tr>
+            <tr>
+                <td><input type="radio" id="Sale" name="section" value="Sale">
+                    <label for="Sale">For Sale</label></td>
+                <td><input type="radio" id="Miscellanecus" name="section" value="Miscellanecus">
+                    <label for="Miscellanecus">Miscellanecus</label></td>
+            </tr>
+            <tr>
+                <td><input type="radio" id="house" name="section" value="Housing">
+                    <label for="house">Housing</label></td>
+                <td><input type="radio" id="All" name="section" value="All">
+                    <label for="All">All of the above</label></td>
+            </tr>
+        </table>
+
+        <h3>2) Search for the following publications</h3>
+        <table>
+            <tr>
+                <td><input type="checkbox" id="search1" name="search1" value="Midwest times">
+                    <label for="search1">Midwest times</label></td>
+                <td><input type="checkbox" id="search2" name="search2" value="Modern News">
+                    <label for="search2">Modern News</label></td>
+                <td><input type="checkbox" id="search3" name="search3" value="Employment Today">
+                    <label for="search3">Employment Today</label></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" id="search4" name="search4" value="Greate Lake Classifieds">
+                    <label for="search4">Greate Lake Classifieds</label></td>
+                <td><input type="checkbox" id="search5" name="search5" value="Middleton Daily">
+                    <label for="search5">Middleton Daily</label></td>
+                <td><input type="checkbox" id="search6" name="search6" value="Cashtown Daily News">
+                    <label for="search6">Cashtown Daily News</label></td>
+            </tr>
+        </table>
+
+        <h3>3) From to <input type="date"> to <input type="date"></h3>
+
+        <h3>4) Enter a few keywords to describe the classified</h3>
+        <input type="text" id="long-text">
+
+        <h3>5) Click one of the options below</h3>
+        <img src="Search.gif" alt="Search" onclick="handle()" style="cursor: pointer;">
+        <img src="Help.gif" alt="Help" onclick="window.location.href='help.html'" style="cursor: pointer;">
+        <img src="Cancel.gif" alt="Cancel" onclick="document.getElementById('searchForm').reset()" style="cursor: pointer;">
+        
+    </form>
+</body>
+</html>

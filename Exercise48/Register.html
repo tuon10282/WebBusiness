@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Form</title>
+    <script>
+        function Register() {
+            alert("Alert for Registration");
+        }
+    </script>
+</head>
+<body bgcolor="#99ccff">
+    <center>
+        <img src="Jackson.gif" alt="Jackson Electronics Logo">
+        <h1>Register Form</h1>
+        <p>Register your Jackson Electronics product here</p>
+        <form id="registerForm">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>First Name</td>
+                        <td>
+                            <input type="text" id="fname">
+                        </td>
+                        <td>Last Name: <input type="text" id="lname"></td>
+                    </tr>
+                    <tr>
+                        <td>Address #1</td>
+                        <td><input type="text" id="add1"></td>
+                    </tr>
+                    <tr>
+                        <td>Address #2</td>
+                        <td><input type="text" id="add2"></td>
+                    </tr>
+                    <tr>
+                        <td>City:</td>
+                        <td>
+                            <input type="text" id="city">
+                        </td>
+                        <td>State: <input style="width: 50px"; type="text" id="state"> Zip: <input style="width: 100px"; type="text" id="zip"></td>
+                    </tr>
+                    <tr>
+                        <td>Country:</td>
+                        <td><input type="text" id="country"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><hr></td>
+                    </tr>
+                    <tr>
+                        <td>Product</td>
+                        <td>
+                            <select id="product">
+                                <option value="Product1">Scan Master</option>
+                                <option value="Product2">Product2</option>
+                                <option value="Product3">Product3</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Date of Purchase:</td>
+                        <td><input type="text" id="date"></td>
+                    </tr>
+                    <tr>
+                        <td>Serial #:</td>
+                        <td><input type="text" id="serial"></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">Use for:</td>
+                        <td>
+                            <input type="radio" id="home" name="use" value="Home">
+                            <label for="home">Home</label> <br/>
+                            <input type="radio" id="Business" name="Business" value="Business">
+                            <label for="business">Business</label>
+                        </td>
+                        <td>
+                            <input type="radio" id="edu" name="use" value="Educational Institution">
+                            <label for="edu">Educational Institution</label><br>
+                            <input type="radio" id="other" name="use" value="Other">
+                            <label for="other">Other</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <input type="radio" id="govt" name="use" value="government">
+                        <label for="edu">Government</label><br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>System (check all that apply):</td>
+                        <td>
+                            <input type="checkbox" id="system1" name="system1" value="Windows">
+                            <label for="system1">Windows</label> <br/>
+                            <input type="checkbox" id="system3" name="system3" value="Macintosh">
+                            <label for="system3">Macintosh</label><br>
+                        </td>
+                        <td>
+                            <input type="checkbox" id="system2" name="system2" value="UNIX">
+                            <label for="system2">UNIX</label> <br/>
+                            <input type="checkbox" id="system4" name="system4" value="Other">
+                            <label for="system4">Other</label>
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><hr></td>
+                    </tr>
+                    <tr>
+                        <td>Comments:</td>
+                        <td colspan="2">
+                            <input type="text" id="long-text" style="width: 400px; height: 100px; font-size: 16px; padding: 10px;">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <input type="button" value="Click on register" onclick="Register()">
+            <input type="reset" value="Click to cancel">
+        </form>
+    </center>
+</body>
+</html>
