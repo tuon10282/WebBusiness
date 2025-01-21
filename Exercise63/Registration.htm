@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport">
+    <title>Member Registration</title>
+    <style>
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        table th {
+            background-color: #3210f8;
+            color:azure
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        tr:hover {
+            background-color: yellow;
+        }
+        tr:link {
+            background-color: rgb(255, 255, 255);
+        }
+    </style>
+</head>
+<body>
+    <h1>Member Registration</h1>
+    <hr/>
+    <form id="registrationForm">
+    <div id="general_info">
+        <label for="name">Name(*):</label>
+        <input type="text" id="name" name="name"><br><br>
+
+        <label>Birthday(*):</label>
+        Days:
+        <select id="day"></select>
+        Month:
+        <select id="month"></select>
+        Year:
+        <select id="year"></select><br><br>
+
+        <label>Gender(*):</label>
+        <input type="radio" id="man" name="gender" value="Man">Man
+        <input type="radio" id="woman" name="gender" value="Woman">Woman<br><br>
+
+        <label for="email">Email(*):</label>
+        <input type="email" id="email" name="email"><br><br>
+    </div>
+        <label>Your favorite:</label><br>
+        <input type="checkbox" name="hobbies" value="Shopping"> Shopping<br>
+        <input type="checkbox" name="hobbies" value="Tourism"> Tourism<br>
+        <input type="checkbox" name="hobbies" value="Chat"> Chat<br>
+        <input type="checkbox" name="hobbies" value="Read a book"> Read a book<br>
+        <input type="checkbox" name="hobbies" value="Listening to music"> Listening to music<br><br>
+
+        <label>Your favorite color:</label><br>
+        <input type="radio" name="color" value="Blue"> <span style="background-color: rgb(24, 62, 216);">Blue</span><br>
+        <input type="radio" name="color" value="Red"> <span style="background-color: rgb(216, 24, 24);">Red</span><br>
+        <input type="radio" name="color" value="Yellow"> <span style="background-color: rgb(216, 200, 24);">Yellow</span><br>
+        <input type="radio" name="color" value="Green"> <span style="background-color: rgb(7, 120, 7);">Green</span><br>
+        <input type="radio" name="color" value="Violet"> <span style="background-color: violet;">Violet</span><br><br>
+
+        <button type="button" onclick="register()">Sign Up</button>
+        <button type="reset" value="Tiếp">Next</button>
+    </form>
+
+    <table id="membersTable" border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Birthday</th>
+                <th>Hobbies</th>
+                <th>Color</th>
+            </tr>
+        </thead>
+        <tbody id="bodynv"></tbody>
+    </table>
+
+    <script>
+        // Populate dropdowns
+        // Populate dropdowns
+    window.onload = function () {
+        const daySelect = document.getElementById("day");
+        const monthSelect = document.getElementById("month");
+        const yearSelect = document.getElementById("year");
+
+        for (let i = 1; i <= 31; i++) {
+            const option = document.createElement("option");
+            option.value = i;
+            option.textContent = i;
+            daySelect.appendChild(option);
+        }
+
+        for (let i = 1; i <= 12; i++) {
+            const option = document.createElement("option");
+            option.value = i;
+            option.textContent = i;
+            monthSelect.appendChild(option);
+        }
+
+        for (let i = 1970; i <= new Date().getFullYear(); i++) {
+            const option = document.createElement("option");
+            option.value = i;
+            option.textContent = i;
+            yearSelect.appendChild(option);
+        }
+    };
+
+    // Register button functionality
+    function register() {
+            // Lấy dữ liệu từ form
+            name = registrationForm.name.value;
+            email = registrationForm.email.value;
+            gender = document.querySelector('input[name="gender"]:checked');
+            day = registrationForm.day.value;
+            month = registrationForm.month.value;
+            year = registrationForm.year.value;
+            hobbies = Array.from(document.querySelectorAll('input[name="hobbies"]:checked'))
+                .map(hobby => hobby.value)
+                .join(", ");
+            color = document.querySelector('input[name="color"]:checked');
+
+            // Kiểm tra các trường bắt buộc
+            if (!name) {
+                alert("Name cannot be left blank!");
+                return;
+            }
+
+            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                alert("Please enter a valid email!");
+                return;
+            }
+
+
+            // Tạo một hàng mới trong bảng
+            tbody = document.getElementById("bodynv");
+            tr = document.createElement("tr");
+
+            // Tạo và thêm các ô vào hàng
+            tdName = document.createElement("td");
+            tdName.textContent = name;
+            tr.appendChild(tdName);
+
+            tdEmail = document.createElement("td");
+            tdEmail.textContent = email;
+            tr.appendChild(tdEmail);
+
+            tdGender = document.createElement("td");
+            tdGender.textContent = gender.value;
+            tr.appendChild(tdGender);
+
+            tdBirthday = document.createElement("td");
+            tdBirthday.textContent = `${day}/${month}/${year}`;
+            tr.appendChild(tdBirthday);
+
+            tdHobbies = document.createElement("td");
+            tdHobbies.textContent = hobbies || "None";
+            tr.appendChild(tdHobbies);
+
+            tdColor = document.createElement("td");
+            tdColor.textContent = color.value;
+            tr.appendChild(tdColor);
+
+            // Thêm hàng mới vào bảng
+            tbody.appendChild(tr);
+
+            // Reset form
+            document.getElementById("registrationForm").reset();
+        }
+</script>
+    </script>
+</body>
+</html>
