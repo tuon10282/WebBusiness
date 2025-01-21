@@ -5,16 +5,21 @@
     <title>Tiêu đề trang</title>
     <script>
         function handle() {
-            alert("Search Simulation");
+            alert("Submit");
         }
     </script>
     <style>
-       
-       
+
         textarea {
-            resize: none;
+            width: 100%;
+            height: 80px;
         }
-        
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body style="background-color: #ccffff";>
@@ -30,7 +35,7 @@
         <label for="ssn"> 2) Social Security Number:</label>
         <input type="text" id="ssn" name="ssn">
         <br/>
-        <label for="department">Department:</label>
+        <label for="department">3) Department:</label>
             <select id="department" name="department">
                 <option value="accounting">Accounting</option>
                 <option value="sales">Sales</option>
@@ -38,11 +43,11 @@
                 <option value="it">IT</option>
             </select>
         <br/>
-        <label for="purpose">Describe the purpose of your trip:</label> <br/>
+        <label for="purpose">4) Describe the purpose of your trip:</label> <br/>
         <textarea id="purpose" name="purpose" rows="4"></textarea>
         <br/>
-        <h3>Itemize your travel expenses</h3>
-            <table>
+        <p> 5)Itemize your travel expenses</p>
+            <table border="1">
                 <thead>
                     <tr>
                         <th>Date</th>
@@ -106,7 +111,7 @@
                     </tr>
                 </tbody>
             </table>
-            <label>Have you submitted your receipts?</label>
+            <label>6) Have you submitted your receipts?</label>
                 <input type="radio" id="receipts-yes" name="receipts" value="yes">
                 <label for="receipts-yes">Yes</label>
                 <input type="radio" id="receipts-no" name="receipts" value="no">
