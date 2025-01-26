@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Tiêu đề trang</title>
+    <script>
+        var txt = "<class><student>";
+        txt += "<id>987456</id>";
+        txt += "<name>Marie Curie</name>";
+        txt += "<birthday>7/11/1867</birthday>";
+        txt += "<gender>Woman</gender>";
+        txt += "</student></class>";
+    </script>
+    <style>
+        body {
+            font-family: Times-new Roman;
+        }
+        table {
+            width: 50%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        /* unvisited row */
+        tr:link {
+            background-color: white;
+            color: black;
+        }
+
+        /* mouse over row */
+        tr:hover {
+            background-color: blue;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <td style="vertical-align: middle; text-align: center; background-color: #e2efd9" colspan="2">Student Information</td>
+        </tr>
+        <tr>
+            <td>Student ID:</td>
+            <td id="id"></td>
+        </tr>
+        <tr>
+            <td>Student Name:</td>
+            <td id="stu_name"></td>
+        </tr>
+        <tr>
+            <td>Birthday:</td>
+            <td id="birthday"></td>
+        </tr>
+        <tr>
+            <td>Gender:</td>
+            <td id="gender"></td>
+        </tr>
+    </table>
+    <script>
+        function load_student() {
+            var parser = new DOMParser();
+            var xmlDoc = parser.parseFromString(txt, "text/xml");
+            xid = xmlDoc.getElementsByTagName("id")[0].childNodes[0].nodeValue;
+            xname = xmlDoc.getElementsByTagName("name")[0].childNodes[0].nodeValue;
+            xbirthday = xmlDoc.getElementsByTagName("birthday")[0].childNodes[0].nodeValue;
+            xgender = xmlDoc.getElementsByTagName("gender")[0].childNodes[0].nodeValue;
+
+            id = document.getElementById("id");
+            id.innerText = xid;
+
+            stuName = document.getElementById("stu_name");
+            stuName.innerText = xname;
+
+            birthday = document.getElementById("birthday");
+            birthday.innerText = xbirthday;
+
+            gender = document.getElementById("gender");
+            gender.innerText = xgender;
+        }
+        load_student();
+    </script>
+</body>
+</html>
