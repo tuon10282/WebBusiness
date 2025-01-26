@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Danh sách sinh viên</title>
+    <script>
+        // Định nghĩa dataset dưới dạng chuỗi XML
+        var dataset = `
+            <students>
+                <student>
+                    <id>987456</id>
+                    <name>Marie Curie</name>
+                    <birthday>7/11/1867</birthday>
+                    <gender>Woman</gender>
+                </student>
+                <student>
+                    <id>987561</id>
+                    <name>Einstein</name>
+                    <birthday>14/3/1879</birthday>
+                    <gender>Man</gender>
+                </student>
+                <student>
+                    <id>985467</id>
+                    <name>Leó Szilárd</name>
+                    <birthday>11/2/1898</birthday>
+                    <gender>Man</gender>
+                </student>
+            </students>
+        `;
+    </script>
+</head>
+<body>
+    <h1>Thông tin sinh viên</h1>
+    <table border="1">
+        <thead>
+            <th colspan="4" style="background-color: yellow; text-align: center;">List of Students</th>
+        </thead>
+        <thead style="background-color: green; color: white;">
+            <th>Student ID</th>
+            <th>Student Name</th>
+            <th>Birthday</th>
+            <th>Gender</th>
+        </thead>
+        <tbody id="tbodystudent"></tbody>
+    </table>
+    <script>
+        function load_student() {
+            // Bước 1: Nạp mô hình XML DOM
+            var parser = new DOMParser(); 
+            var xmlDoc = parser.parseFromString(dataset, "text/xml");
+            var students = xmlDoc.getElementsByTagName('student');
+
+            // Lặp qua từng sinh viên và tạo dòng trong bảng
+            for (let i = 0; i < students.length; i++) {
+                let sti = students[i];
+                let id = sti.getElementsByTagName('id')[0].childNodes[0].nodeValue;
+                let name = sti.getElementsByTagName('name')[0].childNodes[0].nodeValue;
+                let birthday = sti.getElementsByTagName('birthday')[0].childNodes[0].nodeValue;
+                let gender = sti.getElementsByTagName('gender')[0].childNodes[0].nodeValue;
+
+                // Tạo hàng và cột trong bảng
+                let tbodystudent = document.getElementById('tbodystudent');
+                let tr = document.createElement("tr");
+
+                let tdid = document.createElement("td");
+                tdid.innerHTML = id;
+
+                let tdname = document.createElement("td");
+                tdname.innerText = name;
+
+                let tdbirthday = document.createElement("td");
+                tdbirthday.innerText = birthday;
+
+                let tdgender = document.createElement("td");
+                tdgender.innerText = gender;
+
+                tr.appendChild(tdid);
+                tr.appendChild(tdname);
+                tr.appendChild(tdbirthday);
+                tr.appendChild(tdgender);
+
+                // Gán sự kiện click mở trang chi tiết
+                tr.addEventListener("click", () => {
+                    let link = `student.htm?id=${id}&name=${encodeURIComponent(name)}&birthday=${encodeURIComponent(birthday)}&gender=${encodeURIComponent(gender)}`;
+                    window.open(link);
+                });
+
+                tbodystudent.appendChild(tr);
+            }
+        }
+        load_student();
+    </script>
+</body>
+</html>

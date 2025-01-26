@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Chi tiết sinh viên</title>
+</head>
+<body>
+    <h1>Chi tiết sinh viên</h1>
+    <table border="1">
+        <tr>
+            <td>ID:</td>
+            <td id="tdid"></td>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td id="tdname"></td>
+        </tr>
+        <tr>
+            <td>Birthday:</td>
+            <td id="tdbirthday"></td>
+        </tr>
+        <tr>
+            <td>Gender:</td>
+            <td id="tdgender"></td>
+        </tr>
+    </table>
+    <script>
+        // Lấy tham số từ URL
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+
+        // Gán giá trị cho các ô trong bảng
+        document.getElementById("tdid").innerText = urlParams.get("id");
+        document.getElementById("tdname").innerText = urlParams.get("name");
+        document.getElementById("tdbirthday").innerText = urlParams.get("birthday");
+        document.getElementById("tdgender").innerText = urlParams.get("gender");
+    </script>
+</body>
+</html>
