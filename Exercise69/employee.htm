@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee List</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: forestgreen;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th><label for="titleDropdown">Select Title:</label></th>
+                <th colspan="2">
+                    <select id="titleDropdown">
+                        <option value="">-- Select Title --</option>
+                    </select>
+                </th>
+            </tr>
+            <tr style="background-color: forestgreen; color: white">
+                <th>ID</th>
+                <th>Name</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+        <tbody id="employeeTable"></tbody>
+    </table>
+
+    <script>
+        // Hàm nạp dữ liệu XML
+        function loadDoc() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    loadEmployees(this); // Chuyển dữ liệu tới hàm xử lý
+                }
+            };
+            xhttp.open("GET", "employee.xml", true);
+            xhttp.send();
+        }
+
+        // Hàm xử lý XML và cập nhật giao diện
+        function loadEmployees(xml) {
+            var xmlDoc = xml.responseXML;
+            var employees = xmlDoc.getElementsByTagName("employee");
+            var dropdown = document.getElementById("titleDropdown");
+            var employeeTable = document.getElementById("employeeTable");
+
+            // Thêm các tùy chọn vào dropdown (chỉ thêm 1 lần)
+            if (dropdown.children.length === 1) {
+                var titles = new Set();
+                for (let i = 0; i < employees.length; i++) {
+                    titles.add(employees[i].getAttribute("title"));
+                }
+                titles.forEach(title => {
+                    var option = document.createElement("option");
+                    option.value = title;
+                    option.textContent = title;
+                    dropdown.appendChild(option);
+                });
+            }
+
+            var selectedTitle = dropdown.value;
+
+            employeeTable.innerHTML = "";
+
+            // Hiển thị dữ liệu nhân viên nếu có tiêu đề chọn
+            if (selectedTitle !== "") {
+                for (let i = 0; i < employees.length; i++) {
+                    var employee = employees[i];
+                    var title = employee.getAttribute("title");
+
+                    // Kiểm tra điều kiện hiển thị
+                    if (title === selectedTitle) {
+                        var id = employee.getAttribute("id");
+                        var name = employee.getElementsByTagName("name")[0].textContent;
+                        var phone = employee.getElementsByTagName("phone")[0].textContent;
+
+                        // Tạo hàng trong bảng
+                        var tr = document.createElement("tr");
+                        tr.innerHTML = `
+                            <td>${id}</td>
+                            <td>${name}</td>
+                            <td>${phone}</td>
+                        `;
+                        employeeTable.appendChild(tr);
+                    }
+                }
+            }
+        }
+
+        // Gọi hàm nạp dữ liệu và thêm sự kiện thay đổi cho dropdown
+        loadDoc();
+        document.getElementById("titleDropdown").addEventListener("change", loadDoc);
+    </script>
+</body>
+</html>
