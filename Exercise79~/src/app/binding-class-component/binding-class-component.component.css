@@ -1,0 +1,12 @@
+.text-success{
+    color:darkgreen
+    }
+.text-error{
+    color:darkred
+    }
+.text-primary{
+        color:navy
+}
+.text-normal{
+font-style: italic;
+}

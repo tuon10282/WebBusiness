@@ -1,0 +1,20 @@
+<p>binding-event-component works!</p>
+<p>binding-event works!</p>
+<button (click)="onClick($event)">Click Me</button>
+Name:
+<input type="text" #myName>
+<button (click)="onSubmit(myName.value)">Submit</button>
+
+<!-- Extension -->
+<p>
+    Enter Number A: <input type="number" #numA>
+    Enter Number B: <input type="number" #numB>
+</p>
+  
+<button (click)="calculate('plus', numA.value, numB.value)">+</button>
+<button (click)="calculate('subtract', numA.value, numB.value)">-</button>
+<button (click)="calculate('multiply', numA.value, numB.value)">*</button>
+<button (click)="calculate('divide', numA.value, numB.value)">/</button>
+<p>{{ result }}</p>
+
+<button (click)="resetFields(numA, numB, myName)">Reset</button>

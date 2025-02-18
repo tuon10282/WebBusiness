@@ -1,0 +1,23 @@
+#header
+{
+    background-color: rgb(170, 215, 170);
+    text-align: center;
+}
+
+p {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+    color: red; 
+  }
+
+button {
+    background-color: #e7e0e7; /* Màu tím siêu nhạt */
+    padding: 10px 20px;
+    border-color: bisque;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 5px;
+}
+  
+  
