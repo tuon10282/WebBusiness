@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Tiêu đề trang</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            color: white;
+            width: 210mm; /* A4 chiều ngang */;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+        .content {
+        background-color: #008080;
+        }
+        label {
+        padding-bottom: 8px; /* Tạo khoảng cách dưới label */
+        }
+
+        input {
+            padding: 8px;
+            margin-bottom: 12px; /* Tạo khoảng cách giữa các input */
+        }
+        .button
+        {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 50px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="content">
+    <center>
+        <img src="Logo.gif"/>
+        <h1>Newborn Registration</h1>
+    </center>
+
+    <label for="date">Date</label>
+    <input type="date" id="date" name="date">
+    <br/>
+    <label for="fname">1) Infant's first name</label>
+    <input type="text" id="fname" name="fname">
+    <label for="lname">Last</label>
+    <input type="text" id="lname" name="lname">
+    <br/>
+    <label for="recordno">2) Medical Record #</label>
+    <input type="text" id="recordno" name="recordno">
+    <br/>
+    <label for="bdate">3) Date of birth</label>
+    <input type="date" id="bdate" name="bdate">
+    <br/>
+    <label for="weight">4) Weight</label>
+    <input type="number" id="weight" name="weight">
+    <br/>
+    <label for="apgar">5) APGAR score</label>
+    <input type="number" id="apgar" name="apgar">
+    <br/>
+    <label for="fmother">6) Mother's first name</label>
+    <input type="text" id="fmother" name="fmother">
+    <label for="lmother">Last</label>
+    <input type="text" id="lmother" name="lmother">
+    <br/>
+    <label for="ffather">7) Father's name</label>
+    <input type="text" id="ffather" name="ffather">
+    <label for="lfather">Last</label>
+    <input type="text" id="lfather" name="lfather">
+    <br/>
+    <label for ="physician">8) Physician ( check all that apply)</label>
+    <select multiple>
+        <option value="warren_albert">Dr. Warren Albert</option>
+        <option value="maria_alvarez">Dr. Maria Alvarez</option>
+        <option value="karen_brinkman">Dr. Karen Brinkman</option>
+        <option value="michael_kerry">Dr. Michael Kerry</option>
+      </select>
+    <div class="button">
+        <button type="submit">Register</button>
+        <button type="reset">Reset</button>
+    </div>
+</div>
+</body>
+</html>

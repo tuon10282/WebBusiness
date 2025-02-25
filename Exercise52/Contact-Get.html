@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact the Editorial Office</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .form-group {
+            display: flex;
+            align-items: center;
+            gap: 10px; /* Giảm khoảng cách giữa label và input */
+            margin: 10px 0;
+        }
+
+        .form-group label {
+            width: 25%;            
+            text-align: left;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 70%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 8px;
+        }
+        textarea {
+            height: 80px;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .form-row .form-group {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .form-row input, .form-row select {
+            width: 100%;
+        }
+        button {
+            background-color: #d9534f;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #c9302c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Contact the Editorial Office</h2>
+        <form action="display_data.html" method="GET">
+            <div class="form-group">
+                <label for="fullname">Full Name:</label>
+                <input type="text" id="fullname" name="fullname" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="sendto">Send to:</label>
+                    <select id="sendto" name="sendto">
+                        <option value="Editorial board">Editorial board</option>
+                        <option value="News Department">News Department</option>
+                        <option value="Board of Perspectives">Board of Perspectives</option>
+                        <option value="World Board">World Board</option>
+                        <option value="Business Department">Business Department</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+
+            <div class="form-group">
+                <label for="content">Content:</label>
+                <textarea id="content" name="content" required></textarea>
+            </div>
+
+            <button type="submit">Send</button>
+        </form>
+    </div>
+</body>
+</html>

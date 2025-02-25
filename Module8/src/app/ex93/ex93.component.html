@@ -1,0 +1,27 @@
+<p>ex93 works!</p>
+<table border="1">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Age</th>
+        <th>#</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let category of categories">
+            <tr>
+            <td colspan="5">{{ category.CustomerTypeId }}-{{ category.CustomterTypeName }}</td>
+            </tr>
+            <tr *ngFor="let customer of category.Customers">             
+                    <td>{{ customer.Id }}</td>
+                    <td>{{ customer.Name }}</td>
+                    <td>{{ customer.Email }}</td>
+                    <td>{{ customer.Age }}</td>
+                    <td><img [src]="customer.Image" alt="image" width="50"></td>
+            </tr>
+        </ng-container>
+    </tbody>
+  </table>
+  

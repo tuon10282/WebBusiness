@@ -1,0 +1,71 @@
+body
+{
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
+}
+.header
+{
+    background-color:#09467c;
+    color: #fff;
+    padding: 0 0;
+    justify-content: space-between; /* Logo bên trái, menu bên phải */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    display: flex; /* Hiển thị theo kiểu flexbox */
+}
+#logo
+{
+    margin: 0;
+    padding: 0;
+}
+.menu
+{
+    padding: 0 20px;
+}
+select {
+    font-size: 18px; /* Đặt lại font-size cho select */
+    padding: 5px 10px; /* Thêm padding nếu cần */
+    background-color: #fcfcfce1; /* Đặt nền nếu cần */
+}
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch; /* Kéo dài các phần tử con theo chiều dọc */
+    height: 100%; /* Hoặc một giá trị chiều cao cố định */
+    gap: 20px; /* Khoảng cách giữa 2 pannel */
+
+}
+
+.leftpannel {
+    flex: 1;
+    background-color: #09467c;
+    color: #fff;
+}
+
+.rightpannel {
+    display: flex;
+    flex-direction: column;
+    flex: 6;
+}
+
+.banner {
+    display: flex; /* Ảnh nằm theo hàng ngang */
+    width: 100%; /* Full chiều rộng của rightpannel */
+    height: 300px; /* Chiều cao có thể thay đổi theo nhu cầu */
+    overflow: hidden; /* Đảm bảo không bị tràn */
+}
+
+.banner img {
+    flex: 1; /* Chia đều theo chiều rộng */
+    height: 100%; /* Đảm bảo ảnh có chiều cao bằng nhau */
+    object-fit: cover; /* Giữ tỷ lệ ảnh, tránh méo */
+}
+#what
+{
+    background-color: #b0cbe4;
+    color: #09467c;
+    padding: 10px 20px;
+    margin-top: 0
+}

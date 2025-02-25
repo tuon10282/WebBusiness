@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Quadratic Equation Solver</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        thead {
+            background: #dfeecf;
+            padding: 10px;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td {
+            padding: 8px;
+        }
+        td:last-child {
+            width: 90%; /* Điều chỉnh độ rộng tùy theo mong muốn */
+        }
+
+        .result {
+            font-weight: bold;
+            color: red;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        button {
+            padding: 8px 15px;
+            border: 1px solid orange;
+            background: white;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: orange;
+            color: white;
+        }
+    </style>
+    <script>
+        function solveQuadratic() {
+            let a = parseFloat(document.getElementById("a").value) || 0;
+            let b = parseFloat(document.getElementById("b").value) || 0;
+            let c = parseFloat(document.getElementById("c").value) || 0;
+            let result = "";
+
+            if (a === 0) {
+                if (b === 0 && c === 0) {
+                    result = "Infinite solutions";
+                } else if (b === 0 && c !== 0) {
+                    result = "No solution";
+                } else {
+                    result = `x = ${(-c / b).toFixed(2)}`;
+                }
+            } else {
+                let delta = b * b - 4 * a * c;
+                if (delta < 0) {
+                    result = "No real solution";
+                } else if (delta === 0) {
+                    result = `x1 = x2 = ${(-b / (2 * a)).toFixed(2)}`;
+                } else {
+                    let x1 = (-b + Math.sqrt(delta)) / (2 * a);
+                    let x2 = (-b - Math.sqrt(delta)) / (2 * a);
+                    result = `x1 = ${x1.toFixed(2)} ; x2 = ${x2.toFixed(2)}`;
+                }
+            }
+            document.getElementById("result").innerHTML = result;
+        }
+
+        function clearFields() {
+            document.getElementById("a").value = "";
+            document.getElementById("b").value = "";
+            document.getElementById("c").value = "";
+            document.getElementById("result").innerHTML = "";
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <table border="1px">
+            <thead>
+                <tr>
+                    <th colspan="2">The quadratic equation</th
+                </tr>
+            </thead>
+            <tr>
+                <td>a:</td>
+                <td><input type="text" id="a"></td>
+            </tr>
+            <tr>
+                <td>b:</td>
+                <td><input type="text" id="b"></td>
+            </tr>
+            <tr>
+                <td>c:</td>
+                <td><input type="text" id="c"></td>
+            </tr>
+            <tr>
+                <td>Result:</td>
+                <td class="result" id="result"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <div class="btn-container">
+                        <button onclick="solveQuadratic()">Find solution</button>
+                        <button onclick="clearFields()">Clear</button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<p>ex86-product works!</p>
+
+<table class="product-card" border="1">
+    <tr>
+        <td>Product ID:</td>
+        <td>{{ product.ProductId }}</td>
+    </tr>
+    <tr>
+        <td>Product Name:</td>
+        <td>{{ product.ProductName }}</td>
+    </tr>
+    <tr>
+        <td>Price:</td>
+        <td>${{ product.Price }}</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <img [src]="product.Image"width="100px">
+        </td>
+    </tr>
+</table>

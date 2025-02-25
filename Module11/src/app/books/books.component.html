@@ -1,0 +1,20 @@
+<p>books works!</p>
+{{errMessage}}
+<table border="1">
+<tr>
+<td>BookId</td>
+<td>BookName</td>
+<td>Price</td>
+<td>Image</td>
+</tr>
+<tbody>
+<tr *ngFor="let book of books">
+<td>{{book.BookId}}</td>
+<td>{{book.BookName}}</td>
+<td>{{book.Price}} </td>
+<td>
+    <!-- <img src="assets/book_images/{{book.Image}}"> -->
+    <img [src]="'http://localhost:3001/image/' + book.Image.split('/').pop()" width="50px">
+</tr>
+</tbody>
+</table>

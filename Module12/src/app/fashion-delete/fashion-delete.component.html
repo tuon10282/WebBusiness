@@ -1,0 +1,23 @@
+<p>fashion-delete works!</p>
+<p>{{errMessage}}</p>
+Book Id: <input type="text" #fashionId> <button
+(click)="deleteFashion(fashionId.value)">Delete Book</button>
+<table border="1">
+<tr>
+<td>Id</td>
+<td>Fashion Subject</td>
+<td>Fashion Detail</td>
+<td>#</td>
+</tr>
+<tbody>
+<tr *ngFor="let fashion of fashions">
+<td>{{fashion._id}}</td>
+<td>{{fashion.fashion_subject}}</td>
+<td>{{fashion.fashion_detail}} </td>
+<td>
+<img src="{{fashion.fashion_image}}" width="50px"
+height="50px">
+</td>
+</tr>
+</tbody>
+</table>

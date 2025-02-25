@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+        .total-container {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 10px;
+        }
+        input[type="text"] {
+            width: 50px;
+            text-align: center;
+        }
+        .sum-button {
+            background-color: orange;
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+            font-size: 16px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h2>Product List</h2>
+    <form action="sum_result.html" method="GET" onsubmit="return updateTotalBeforeSubmit()">
+        <table>
+            <tr>
+                <th>Part Number</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Item Total</th>
+            </tr>
+            <tr>
+                <td>C112</td>
+                <td>Mouse</td>
+                <td><input type="hidden" name="price1" value="19.95">19.95$</td>
+                <td><input type="number" name="qty1" class="qty" data-price="19.95"></td>
+                <td><input type="text" name="total1" class="item-total" readonly></td>
+            </tr>
+            <tr>
+                <td>B124</td>
+                <td>Keyboard US</td>
+                <td><input type="hidden" name="price2" value="29.95">29.95$</td>
+                <td><input type="number" name="qty2" class="qty" data-price="29.95"></td>
+                <td><input type="text" name="total2" class="item-total" readonly></td>
+            </tr>
+            <tr>
+                <td>U125</td>
+                <td>USB KingMax</td>
+                <td><input type="hidden" name="price3" value="39.95">39.95$</td>
+                <td><input type="number" name="qty3" class="qty" data-price="39.95"></td>
+                <td><input type="text" name="total3" class="item-total" readonly></td>
+            </tr>
+        </table>
+        <div class="total-container">
+            <label for="grandTotal">Total:</label>
+            <input type="text" id="grandTotal" name="grandTotal" readonly>
+            <button type="submit" class="sum-button">Sum</button>
+        </div>
+    </form>
+    
+    <script>
+        document.querySelectorAll(".qty").forEach(input => {
+            input.addEventListener("input", function() {
+                let price = parseFloat(this.getAttribute("data-price")) || 0;
+                let qty = parseInt(this.value) || 0;
+                let total = price * qty;
+                this.closest("tr").querySelector(".item-total").value = total.toFixed(2);
+                updateGrandTotal();
+            });
+        });
+
+        function updateGrandTotal() {
+            let sum = 0;
+            document.querySelectorAll(".item-total").forEach(input => {
+                sum += parseFloat(input.value) || 0;
+            });
+            document.getElementById("grandTotal").value = sum.toFixed(2);
+        }
+
+        function updateTotalBeforeSubmit() {
+            updateGrandTotal(); // Cập nhật lại grandTotal trước khi gửi
+            return true; // Cho phép form gửi đi
+        }
+    </script>
+</body>
+</html>

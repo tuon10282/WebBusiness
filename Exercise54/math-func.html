@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Operations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        table {
+            margin: auto;
+            border-collapse: collapse;
+            width: 300px;
+        }
+        td {
+            padding: 8px;
+            border: 1px solid black;
+        }
+        input {
+            width: 100px;
+            text-align: center;
+        }
+        button {
+            margin: 5px;
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Math Operations</h2>
+    <table>
+        <tr>
+            <td>a:</td>
+            <td><input type="number" id="a" value="30"></td>
+        </tr>
+        <tr>
+            <td>b:</td>
+            <td><input type="number" id="b" value="45"></td>
+        </tr>
+        <tr>
+            <td>c:</td>
+            <td><input type="number" id="c" value="90"></td>
+        </tr>
+        <tr>
+            <td>Result:</td>
+            <td><input type="text" id="result" readonly></td>
+        </tr>
+    </table>
+    <br>
+    <button onclick="calculateMax()">MAX</button>
+    <button onclick="calculateMin()">MIN</button>
+    <button onclick="calculateSin()">sin(a)</button>
+    <button onclick="calculateCos()">cos(a)</button>
+    <button onclick="calculatePower()">a^b</button>
+
+    <script>
+        function getValues() {
+            return {
+                a: parseFloat(document.getElementById("a").value) || 0,
+                b: parseFloat(document.getElementById("b").value) || 0,
+                c: parseFloat(document.getElementById("c").value) || 0
+            };
+        }
+
+        function calculateMax() {
+            const { a, b, c } = getValues();
+            document.getElementById("result").value = Math.max(a, b, c);
+        }
+
+        function calculateMin() {
+            const { a, b, c } = getValues();
+            document.getElementById("result").value = Math.min(a, b, c);
+        }
+
+        function calculateSin() {
+            const { a } = getValues();
+            document.getElementById("result").value = Math.sin(a * Math.PI / 180).toFixed(10);
+        }
+
+        function calculateCos() {
+            const { a } = getValues();
+            document.getElementById("result").value = Math.cos(a * Math.PI / 180).toFixed(10);
+        }
+
+        function calculatePower() {
+            const { a, b } = getValues();
+            document.getElementById("result").value = Math.pow(a, b);
+        }
+    </script>
+</body>
+</html>

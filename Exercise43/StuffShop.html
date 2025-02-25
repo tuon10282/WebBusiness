@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Tiêu đề trang</title>
+    <style>
+        body
+        {
+            color:azure;
+            width: 210mm; /* A4 chiều ngang */;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+        .content
+        {
+            background-color: black;
+            display: flex;
+            justify-content: space-between;
+            align-items: center; /* Căn giữa theo chiều dọc */
+            padding: 20px;
+            gap: 100px;
+
+        }
+        .navigation{
+            flex: 4;
+            color: #fff;
+            font-size: 20px;
+        }
+        .navigation p{
+            background-color: red;
+            border: 5px solid yellow;
+            padding:8px;
+
+        }
+
+        .banner{
+            flex: 6;
+            align-items: center;
+            justify-content: center; /* Căn giữa theo chiều ngang */
+            text-align: center;
+            height: 100%;
+        }
+        .logo{
+            margin: 50px;
+        }
+        .logo h1{
+            font-size: 40px;
+            font-weight: bold;
+            margin: -15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="navigation">
+            <p><span style="color:black">A</span>ntiques</p>
+            <p><span style="color:rgb(0, 51, 255)">B</span>ooks</p>
+            <p><span style="color:rgb(33, 98, 2)">C</span>lothes</p>
+            <p><span style="color:rgb(43, 255, 0)">E</span>lectronics</p>
+            <p><span style="color:rgb(255, 255, 255)">F</span>urniture</p>
+            <p><span style="color:rgb(0, 247, 255)">J</span>ewelry</p>
+            <p><span style="color:rgb(166, 166, 166)">M</span>usic and Videos</p>
+            <p><span style="color:rgb(31, 0, 132)">S</span>porting Goods</p>
+        </div>
+        <div class="banner">
+            <div class="logo">
+                <h1>THE</h1>
+                <h1>STUFF</h1>
+                <h1>SHOP</h1>
+            </div>
+            <p>The Stuff Shop is your online home for the buying, selling and trading of used merchandise and unique collectives</p>
+            <p> </p>
+            <p>Click a link on the left to browse the store</p>
+            <div class="img_tutorial">
+                <img src="images/bike.jpg" alt="Tutorial">
+                <img src="images/pc.jpg" alt="Tutorial">
+                <img src="images/gloves.jpg" alt="Tutorial">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

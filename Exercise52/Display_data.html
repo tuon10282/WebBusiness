@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submitted Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h2 {
+            color: #333;
+        }
+        p {
+            text-align: left;
+            font-size: 16px;
+        }
+        strong {
+            color: #d9534f;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Submitted Contact Details</h2>
+        <p><strong>Full Name:</strong> <span id="fullname"></span></p>
+        <p><strong>Email:</strong> <span id="email"></span></p>
+        <p><strong>Send To:</strong> <span id="sendto"></span></p>
+        <p><strong>Title:</strong> <span id="title"></span></p>
+        <p><strong>Content:</strong></p>
+        <p id="content"></p>
+    </div>
+
+    <script>
+        function getQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            document.getElementById("fullname").textContent = params.get("fullname");
+            document.getElementById("email").textContent = params.get("email");
+            document.getElementById("sendto").textContent = params.get("sendto");
+            document.getElementById("title").textContent = params.get("title");
+            document.getElementById("content").textContent = params.get("content");
+        }
+
+        window.onload = getQueryParams;
+    </script>
+</body>
+</html>

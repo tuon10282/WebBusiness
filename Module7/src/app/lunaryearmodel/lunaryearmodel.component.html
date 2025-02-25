@@ -1,0 +1,50 @@
+<p>lunaryearmodel works!</p>
+<table border="1">
+  <tr>
+    <td colspan="2" id="title">Chuyển đổi Dương lịch thành Âm lịch</td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <label for="days">Ngày:</label>
+      <select id="days" [(ngModel)]="selectedDay">
+        <option *ngFor="let day of days" [value]="day">{{ day }}</option>
+      </select>
+
+      <label for="months">Tháng:</label>
+      <select id="months" [(ngModel)]="selectedMonth">
+        <option *ngFor="let month of months" [value]="month">{{ month }}</option>
+      </select>
+
+      <label for="years">Năm:</label>
+      <select id="years" [(ngModel)]="selectedYear">
+        <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+      </select>
+
+      <button (click)="convertToLunar()">Chuyển đổi</button>
+    </td>
+  </tr>
+  
+  <tr>
+    <td colspan="2" id="title">Âm lịch</td>
+  </tr>
+  <tr>
+    <td>Thứ trong tuần</td>
+    <td>{{ lunarDayOfWeek }}</td>
+  </tr>
+  <tr>
+    <td>Ngày tháng năm âm</td>
+    <td>{{ lunarResult }}</td>
+  </tr>
+  <tr>
+    <td>Năm Can Chi</td>
+    <td>{{ lunarYearCanChi }}</td>
+  </tr>
+  <tr>
+    <td>Tháng Can Chi</td>
+    <td>{{ lunarMonthCanChi }}</td>
+  </tr>
+  <tr>
+    <td>Ngày Can Chi</td>
+    <td>{{ lunarDayCanChi }}</td>
+  </tr>
+</table>
