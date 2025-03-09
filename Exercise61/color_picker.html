@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Picker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .container {
+            padding: 20px;
+            border: 1px solid black;
+        }
+        .preview {
+            border: 1px solid gray;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        input[type="text"] {
+            width: 40px;
+            text-align: center;
+        }
+        button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>A Simple Color Picker</h2>
+    <div class="wrapper">
+        <div class="container">
+            <p>Background (enter values from '00' to 'FF')</p>
+            RED: <input type="text" id="bgRed" value="FF"> 
+            GREEN: <input type="text" id="bgGreen" value="FF"> 
+            BLUE: <input type="text" id="bgBlue" value="FF">
+            
+            <p>Text (enter values from '00' to 'FF')</p>
+            RED: <input type="text" id="txtRed" value="00"> 
+            GREEN: <input type="text" id="txtGreen" value="00"> 
+            BLUE: <input type="text" id="txtBlue" value="00">
+            
+            <br>
+            <button onclick="applyColors()">Apply</button>
+            <button onclick="location.reload()">Reload</button>
+        </div>
+        
+        <div class="preview" id="preview">
+            <strong>HAMLET:</strong>
+            <p id="content">Speak the speech, I pray you, as I pronounced it to you, trippingly on the tongue: but if you mouth it, as many of your players do, I had as lief the town-crier spoke my lines.</p>
+        </div>
+    </div>
+    
+    <p style="margin-top: 20px; font-size: 14px;">This is a simple color picker for demonstration purposes.</p>
+
+    <script>
+        function applyColors() {
+            let bgRed = document.getElementById('bgRed').value;
+            let bgGreen = document.getElementById('bgGreen').value;
+            let bgBlue = document.getElementById('bgBlue').value;
+            let txtRed = document.getElementById('txtRed').value;
+            let txtGreen = document.getElementById('txtGreen').value;
+            let txtBlue = document.getElementById('txtBlue').value;
+            
+            let bgColor = `#${bgRed}${bgGreen}${bgBlue}`;
+            let txtColor = `#${txtRed}${txtGreen}${txtBlue}`;
+            
+            document.getElementById('preview').style.backgroundColor = bgColor;
+            document.getElementById('content').style.color = txtColor;
+        }
+    </script>
+</body>
+</html>

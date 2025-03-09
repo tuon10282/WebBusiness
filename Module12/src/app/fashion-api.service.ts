@@ -50,7 +50,7 @@ postFashion(aFashion:any):Observable<any>
     retry(3),
     catchError(this.handleError))
     }
-//132
+//131
 putFashion(aFashion:any):Observable<any>
   {
   const headers=new HttpHeaders().set("Content-Type", "application/json;charset=utf-8")
@@ -64,7 +64,7 @@ putFashion(aFashion:any):Observable<any>
   catchError(this.handleError))
 }
 
-//133
+//132
 deleteFashion(fashionId:string):Observable<any>
 {
   const headers=new HttpHeaders().set("Content-Type","application/json;charset=utf-8")

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <link rel="stylesheet" href="style.css">
+    <title>Tiêu đề trang</title>
+</head>
+<body>
+    <div class="content">
+        <div class="wrap-left"></div> <!-- Nơ trái -->
+        <div class="sidebar">
+            <h3>Why don't you visit our:</h3>
+            <ul>
+                <li><a href="#">Home Page</a></li>
+                <li><a href="#">Angels</a></li>
+                <li><a href="#">Cards</a></li>
+                <li><a href="#">Collectibles</a></li>
+                <li><a href="#">Garland</a></li>
+                <li><a href="#">Gift Wrap</a></li>
+                <li><a href="#">Lights</a></li>
+                <li><a href="#">Nutcrackers</a></li>
+                <li><a href="#">Ornaments</a></li>
+                <li><a href="#">Santa</a></li>
+                <li><a href="#">Trains</a></li>
+                <li><a href="#">Trees</a></li>
+                <li><a href="#">Wreaths</a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <img class=title src="images/Logo.jpg" alt="North Pole Novelties">
+            <div id="bgyellow">
+            <p class="subtitle" id="countdown"></p>
+            </div>
+            <div class="content">
+                <div class="left">
+                    <h2 id="green_title">Welcome!</h2>
+                    <p>Welcome to <span class="highlight">North Pole Novelties</span>. Consider us your complete holiday store. Whether you're a collector or simply looking for a beautiful piece to treasure for years, you'll find it at NPN. Please click on one of the many links to explore all we have to offer.</p>
+                    <h2 id="green_title">News Flash!</h2>
+                    <p>North Pole Novelties is proud to announce a new line of <span class="highlight">Lasseter Old Towne Village collectible houses</span>. Start building your collection of these wonderful miniature porcelain houses and shops.</p>
+                    <p>Each model has accessories to enhance the collection. Be sure to order extra trees, fences, street lights and signs to bring activity and a festive atmosphere to your miniature town.
+                    </p>
+                </div>
+                <div class="right">
+                    <h2 id="green_title">Who Are We?</h2>
+                    <img src="images/image.png" alt="David Watkins" style="float: right; width:100px ">
+                    <p>Located in Seton Grove, Minnesota, North Pole Novelties is one of the oldest and largest holiday stores in the country. The store was founded in 1968 by <span class="highlight">David Watkins</span> (shown here). Today, David, his family, and over 300 employees manage the daily operation of making the holiday season last all year.
+                    </p>
+                    <p>The store itself is the size of two football fields and attracts visitors from around the world. If you can't pay us a visit, order our catalogue. We will deliver to any spot in the United States and overseas. In a rush? We can deliver your order overnight! We also gift wrap.</p>
+                </div>
+            </div>
+            <hr color="black"/>
+            <div class="footer">
+                <p style="color:green">North Pole Novelties<br>25 Candle Avenue<br>Seton Grove, MN 53112<br>Telephone: (404)-555-1235</p>
+            </div>
+        </div>
+        <div class="wrap-right"></div> <!-- Nơ phải -->
+    </div>
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    let today = new Date();
+    let cmas = new Date(today.getFullYear(), 11, 25); // 25/12 của năm hiện tại
+
+    console.log("Hôm nay:", today.toDateString()); // Kiểm tra ngày hôm nay
+    console.log("Giáng Sinh:", cmas.toDateString()); // Kiểm tra ngày Giáng Sinh năm nay
+
+    // Nếu hôm nay đã qua 25/12, tính cho năm sau
+    if (today.getMonth() === 11 && today.getDate() > 25) {
+        cmas.setFullYear(cmas.getFullYear() + 1);
+        console.log("Đã qua Giáng Sinh, tính cho năm sau:", cmas.toDateString());
+    }
+
+    let one_day = 1000 * 60 * 60 * 24; // Số mili giây trong một ngày
+    let daysRemaining = Math.ceil((cmas.getTime() - today.getTime()) / one_day);
+
+    console.log("Số mili giây còn lại:", cmas.getTime() - today.getTime()); // Khoảng cách thời gian tính bằng mili giây
+    console.log("Số ngày còn lại:", daysRemaining); // Kiểm tra số ngày còn lại
+
+    // Hiển thị lên trang web
+    document.getElementById("countdown").innerHTML = 
+        `Today is ${today.toDateString()}<br>Only ${daysRemaining} days until Christmas!`;
+});
+
+
+    </script>
+</body>
+</html>

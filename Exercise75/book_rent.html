@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách sách mượn</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 5px;
+            text-align: center;
+        }
+        th {
+            background-color: lightgray;
+        }
+        input {
+            margin-bottom: 10px;
+            width: 200px;
+        }
+        .info-box {
+            border: 1px solid black;
+            padding: 10px;
+            width: 250px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>Nhập thông tin:</h3>
+    <div class="info-box">
+        <label>Nhập Mã: </label>
+        <input type="text" id="searchMa" onkeyup="searchTable()" placeholder="Nhập mã sách..."><br>
+
+        <label>Nhập Tên: </label>
+        <input type="text" id="searchTen" onkeyup="searchTable()" placeholder="Nhập tên sách..."><br>
+
+        <label>Mã & Tên:</label>
+        <span id="studentInfo"></span>
+    </div>
+
+    <h3>Danh sách Sách đang mượn:</h3>
+    <table id="bookTable">
+        <thead>
+            <tr>
+                <th>Mã Sách</th>
+                <th>Tên Sách</th>
+                <th>Số Trang</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        function xuly_json_html_dom_list(data) {
+            var tbody = document.querySelector("#bookTable tbody");
+            tbody.innerHTML = "";
+
+            document.getElementById("studentInfo").innerText = data.Ma + " - " + data.Ten;
+
+            data.Sachs.forEach(book => {
+                var row = document.createElement("tr");
+
+                var td_ma = document.createElement("td");
+                td_ma.innerText = book.Ma;
+                row.appendChild(td_ma);
+
+                var td_ten = document.createElement("td");
+                td_ten.innerText = book.Ten;
+                row.appendChild(td_ten);
+
+                var td_trang = document.createElement("td");
+                td_trang.innerText = book.Trang;
+                row.appendChild(td_trang);
+
+                tbody.appendChild(row);
+            });
+        }
+
+        function fetchBookData() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "sinhvien.json", true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var jsonData = JSON.parse(xhr.responseText);
+                    xuly_json_html_dom_list(jsonData);
+                }
+            };
+            xhr.send();
+        }
+
+        function searchTable() {
+            var inputMa = document.getElementById("searchMa").value.toLowerCase();
+            var inputTen = document.getElementById("searchTen").value.toLowerCase();
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "sinhvien.json", true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var jsonData = JSON.parse(xhr.responseText);
+                    var filteredBooks = jsonData.Sachs.filter(book => 
+                        book.Ma.toLowerCase().includes(inputMa) && 
+                        book.Ten.toLowerCase().includes(inputTen)
+                    );
+
+                    xuly_json_html_dom_list({ Ma: jsonData.Ma, Ten: jsonData.Ten, Sachs: filteredBooks });
+                }
+            };
+            xhr.send();
+        }
+
+        window.onload = fetchBookData;
+    </script>
+
+</body>
+</html>

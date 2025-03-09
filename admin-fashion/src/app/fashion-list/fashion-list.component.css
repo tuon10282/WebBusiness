@@ -1,0 +1,81 @@
+/* Table Styling */
+.fashion-table-container {
+  max-width: 700px;
+  margin: 30px auto; /* Căn giữa */
+  padding: 20px;
+  background-color: #f8f8f8; /* Đồng bộ màu nền */
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Table */
+.fashion-table {
+  width: 100%;
+  background-color: #fff; /* Nền sáng đồng bộ */
+  color: black;
+  border-radius: 8px;
+  overflow: hidden;
+  border-collapse: collapse;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.fashion-table thead {
+  background-color: #ddd; /* Header sáng hơn */
+}
+
+.fashion-table th {
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px;
+  text-align: center;
+}
+
+.fashion-table td {
+  padding: 10px;
+  text-align: center;
+  vertical-align: middle;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Action Buttons */
+.actions-cell button {
+  margin: 2px;
+}
+
+/* Filter Section */
+.actions-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.filter-section select {
+  width: 200px;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .fashion-table-container {
+    width: 95%;
+  }
+
+  .actions-row {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .filter-section select {
+    width: 100%;
+  }
+
+  .actions-row button {
+    width: 100%;
+    margin-top: 10px;
+  }
+}

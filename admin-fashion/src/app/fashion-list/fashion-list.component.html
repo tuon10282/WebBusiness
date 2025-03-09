@@ -1,0 +1,46 @@
+<div class="container">
+  <h2 class="text-center">Fashion Items</h2>
+
+  <!-- Filter & Action Row -->
+  <div class="actions-row d-flex justify-content-between align-items-center">
+    <div class="filter-section">
+      <label for="styleFilter" class="me-2">Filter by Style:</label>
+      <select id="styleFilter" class="form-select" [(ngModel)]="selectedStyle" (change)="filterByStyle()">
+        <option value="">All Styles</option>
+        <option *ngFor="let style of styles" [value]="style">{{ style }}</option>
+      </select>
+    </div>
+    <button class="btn btn-primary" (click)="addNewFashion()">Add New Fashion</button>
+  </div>
+
+  <!-- Table -->
+  <div class="table-responsive mt-3">
+    <table class="table fashion-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Style</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let fashion of fashions">
+          <td>{{ fashion._id }}</td> <!-- ID -->
+          <td>{{ fashion.title }}</td> <!-- Title -->
+          <td>{{ fashion.style }}</td> <!-- Style -->
+          <td class="actions-cell">
+            <button class="btn btn-info btn-sm" (click)="viewDetails(fashion._id)">View</button>
+            <button class="btn btn-warning btn-sm" (click)="editFashion(fashion._id)">Edit</button>
+            <button class="btn btn-danger btn-sm" (click)="deleteFashion(fashion._id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- No Data Message -->
+  <div *ngIf="fashions.length === 0" class="alert alert-info text-center">
+    No fashion items found.
+  </div>
+</div>

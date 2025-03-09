@@ -1,0 +1,74 @@
+.container {
+  max-width: 600px;
+  margin: 50px auto; /* Căn giữa và tạo khoảng cách trên dưới */
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-actions {
+  text-align: center;
+}
+
+.btn {
+  margin: 5px;
+  padding: 8px 15px;
+  border-radius: 5px;
+}
+
+/* 🟢 Chỉnh lại background và border của ngx-editor */
+.ngx-editor-wrapper {
+  background-color: #555 !important;
+  border: 1px solid #aaa !important;
+  border-radius: 5px;
+  width: 100%;
+  padding: 8px;
+}
+
+/* 🟣 Chỉnh toolbar */
+.ngx-editor-menu {
+  background-color: #666 !important;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+/* 🔵 Chỉnh lại nội dung bên trong editor */
+.ngx-editor {
+  background-color: #fafafa !important;
+  color: black !important;
+  min-height: 150px !important;
+  padding: 10px;
+  border-radius: 5px;
+  resize: vertical; /* Cho phép người dùng kéo để mở rộng */
+}
+
+/* Placeholder cho editor */
+.ngx-editor::placeholder {
+  color: #666 !important;
+}
+
+/* 🔴 Chỉnh icon trong toolbar */
+.ngx-editor-menu button {
+  color: white !important;
+  background: transparent;
+  border-radius: 5px;
+  padding: 5px;
+  transition: all 0.2s ease-in-out;
+}
+
+.ngx-editor-menu button:hover {
+  background-color: #777;
+  transform: scale(1.1);
+}

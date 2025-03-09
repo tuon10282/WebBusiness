@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Mouse Trigger</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+        tbody tr:nth-child(even) {
+    background-color: lemonchiffon;
+}
+
+        th {
+            background-color: #1E4F91;
+            color: white;
+        }
+        .hovered {
+            background-color: yellow !important;
+        }
+        .default {
+            background-color: lightgreen !important;
+        }
+    </style>
+</head>
+<body>
+    <h2>Table Mouse Trigger</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Student ID</th>
+                <th>Student Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>123456</td>
+                <td>Albert Einstein</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>321232</td>
+                <td>Niels Bohr</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>987544</td>
+                <td>Stephen Hawking</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>359687</td>
+                <td>Isaac Newton</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>574878</td>
+                <td>Nikola Tesla</td>
+            </tr>
+            <tr>
+                <td colspan="3" style="background-color: #1E4F91;color:aliceblue">Designed by Tuong</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const rows = document.querySelectorAll("tbody tr");
+
+            // Hàm xử lý khi di chuột vào (mouseover)
+            function handleMouseOver(event) {
+                event.currentTarget.classList.add("hovered");
+                event.currentTarget.classList.remove("default");
+            }
+
+            // Hàm xử lý khi di chuột ra (mouseleave)
+            function handleMouseLeave(event) {
+                event.currentTarget.classList.remove("hovered");
+                event.currentTarget.classList.add("default");
+            }
+
+            // Gán sự kiện cho từng hàng trong bảng
+            rows.forEach(row => {
+                row.addEventListener("mouseover", handleMouseOver);
+                row.addEventListener("mouseleave", handleMouseLeave);
+            });
+        });
+    </script>
+</body>
+</html>

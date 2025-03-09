@@ -1,0 +1,62 @@
+/* Table Styling */
+.fashion-detail-table {
+    max-width: 700px;
+    margin: 30px auto; /* Căn giữa với khoảng cách trên dưới */
+    padding: 20px;
+    background-color: #f8f8f8; /* Đồng bộ màu nền */
+    border-radius: 8px; /* Bo góc */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Tạo độ nổi */
+}
+
+/* Bảng */
+.table {
+    width: 100%;
+    background-color: #fff; /* Màu nền sáng giống form */
+    color: black;
+    border-radius: 8px;
+    overflow: hidden;
+    border-collapse: collapse;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+th {
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #ddd !important;
+    padding: 12px;
+    text-align: center;
+}
+
+/* Cells */
+td {
+    padding: 10px;
+    text-align: center; /* Căn giữa nội dung */
+    border-bottom: 1px solid #ccc;
+}
+
+/* Image Styling */
+.fashion-img {
+    max-width: 100px;
+    height: auto;
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto; /* Căn giữa ảnh */
+}
+
+/* Buttons */
+.btn {
+    width: 120px;
+    margin: 5px auto;
+    padding: 8px;
+    border-radius: 5px;
+    display: block; /* Để căn giữa */
+    text-align: center;
+    background-color: #666;
+    color: white;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: #888;
+}

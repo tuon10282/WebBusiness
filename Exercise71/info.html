@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <title>Thông tin khách hàng</title>
+    <script>
+        // Dữ liệu khách hàng
+        var user = {
+            "id": "100005823642721",
+            "first_name": "Duy Thanh",
+            "gender": "male",
+            "last_name": "Trần",
+            "link": "https://www.facebook.com/duythanhcse",
+            "locale": "en_US",
+            "birthday": "20/12/1961",
+            "name": "Duy Thanh Trần",
+            "username": "duythanhcse"
+        };
+
+        // Hiển thị dữ liệu lên trang web
+        window.onload = function () {
+            document.getElementById("id").innerHTML = user.id;
+            document.getElementById("first_name").innerHTML = user.first_name;
+            document.getElementById("last_name").innerHTML = user.last_name;
+            document.getElementById("full_name").innerHTML = user.name;
+            document.getElementById("gender").innerHTML = user.gender === "male" ? "Nam" : "Nữ";
+            document.getElementById("birthday").innerHTML = user.birthday;
+            document.getElementById("profile_link").innerHTML = `<a href="${user.link}" target="_blank">Facebook</a>`;
+            document.getElementById("username").innerHTML = user.username;
+        };
+    </script>
+</head>
+<body>
+    <h1>Thông tin khách hàng</h1>
+    <table border="1" cellpadding="5">
+        <tr>
+            <td><b>Mã khách hàng</b></td>
+            <td id="id"></td>
+        </tr>
+        <tr>
+            <td><b>Họ</b></td>
+            <td id="last_name"></td>
+        </tr>
+        <tr>
+            <td><b>Tên</b></td>
+            <td id="first_name"></td>
+        </tr>
+        <tr>
+            <td><b>Họ và Tên</b></td>
+            <td id="full_name"></td>
+        </tr>
+        <tr>
+            <td><b>Giới tính</b></td>
+            <td id="gender"></td>
+        </tr>
+        <tr>
+            <td><b>Ngày sinh</b></td>
+            <td id="birthday"></td>
+        </tr>
+        <tr>
+            <td><b>Facebook</b></td>
+            <td id="profile_link"></td>
+        </tr>
+        <tr>
+            <td><b>Username</b></td>
+            <td id="username"></td>
+        </tr>
+    </table>
+</body>
+</html>

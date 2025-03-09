@@ -1,0 +1,41 @@
+<div class="container">
+    <!-- Search bar - centered with inline layout -->
+    <div class="search-container">
+      <input type="text" class="form-control" [(ngModel)]="searchQuery" placeholder="Try 'STREET STYLE'...">
+      <button class="btn btn-dark" (click)="search()">SEARCH</button>
+    </div>
+    
+    <!-- Loading spinner -->
+    <div *ngIf="isLoading" class="d-flex justify-content-center my-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    
+    <!-- Error message -->
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+    
+    <!-- Fashion styles section -->
+    <div *ngIf="!isLoading">
+      <div *ngFor="let styleGroup of fashionByStyles">
+        <!-- Modified heading to remove potential checkbox -->
+        <h3 class="text-center my-4 fashion-heading">{{ styleGroup.name | uppercase }}</h3>
+        
+        <div class="fashion-grid">
+          <div class="fashion-item" *ngFor="let fashion of styleGroup.fashions">
+            <div class="card clickable" (click)="viewDetails(fashion._id)">
+              <div class="position-relative">
+                <img [src]="fashion.thumbnail" class="card-img-top" alt="{{ fashion.title }}">
+
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">{{ fashion.title }}</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

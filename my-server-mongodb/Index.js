@@ -80,3 +80,40 @@ app.delete("/fashions/:id",cors(),async(req,res)=>{
     //send Fahsion after remove
     res.send(result[0])
     })
+//135
+var cookieParser = require('cookie-parser');
+app.use(cookieParser());
+app.get("/create-cookie",cors(),(req,res)=>{
+    res.cookie("username","tranduythanh")
+    res.cookie("password","123456")
+    account={"username":"tranduythanh",
+    "password":"123456"}
+    res.cookie("account",account)
+    res.send("cookies are created")
+    })
+app.get("/read-cookie",cors(),(req,res)=>{
+    //cookie is stored in client, so we use req
+    username=req.cookies.username
+    password=req.cookies.password
+    account=req.cookies.account
+    infor="username = "+username+"<br/>"
+    infor+="password = "+password+"<br/>"
+    if(account!=null)
+        {
+        infor+="account.username = "+account.username+"<br/>"
+        infor+="account.password = "+account.password+"<br/>"
+        }
+    res.send(infor) 
+    })
+//Expires after 360000 ms from the time it is set.
+app.get("/set-cookie", cors(), (req, res) => {
+    res.cookie("infor_limit1", 'I am limited Cookie - way 1', {expire: 360000 + Date.now()}); 
+    res.cookie("infor_limit2", 'I am limited Cookie - way 2', {maxAge: 360000});
+    res.send("Limited cookies have been set!");
+});
+app.get("/clear-cookie",cors(),(req,res)=>{
+    res.clearCookie("account")
+    res.send("[account] Cookie is removed") 
+    })
+        
+        

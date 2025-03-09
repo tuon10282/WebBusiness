@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Neonatal Feeding Study</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            color: hsl(0, 0%, 100%);
+            margin: 0;
+            padding: 0;
+            width: 210mm;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+        .content {
+            padding: 50px;
+            background-color: #000080;
+        }
+        .header {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td {
+            padding: 8px;
+        }
+        input, select {
+            width: 200px;
+        }
+        .small-input {
+            width: 50px;
+            text-align: center;
+        }
+        .button-group {
+            text-align: center;
+            margin-top: 10px;
+        }
+        button {
+            padding: 5px 15px;
+            border: none;
+            background: #ffffff;
+            color: #000080;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #cccccc;
+        }
+        /* Căn chỉnh First Name & Last Name trên cùng một hàng */
+        .name-container {
+            display: flex;
+            gap: 10px;
+        }
+        .name-container input {
+            flex: 1;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("dateInput").value = new Date().toLocaleDateString('en-GB');
+        });
+    </script>
+</head>
+<body>
+    <div class="content">
+        <div class="header">
+            <img src="/Exercise58/Logo.gif" alt="Logo"/>
+            <h1>Neonatal Feeding Study</h1>
+        </div>
+        <p style="text-align: right;">
+            Today is <input type="text" id="dateInput" size="10" readonly style="width: 100px;"/>
+        </p>
+        <form>
+            <table>
+                <tr>
+                    <td>1) Name (first, last):</td>
+                    <td colspan="2">
+                        <div class="name-container">
+                            <input type="text" placeholder="First Name">
+                            <input type="text" placeholder="Last Name">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2) Medical Record #:</td>
+                    <td colspan="2"><input type="text"></td>
+                </tr>
+                <tr >
+                    <td>3) Date of birth:</td>
+                    <td colspan="2"><input type="text" placeholder="mm/dd/yyyy"></td>
+                </tr>
+                <tr>
+                    <td>4) Physician:</td>
+                    <td colspan="2">
+                        <select id="physicianSelect" onchange="checkPhysician()">
+                            <option value="Dr. Warren Albert">Dr. Warren Albert</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr id="otherPhysicianRow" style="display: none;">
+                    <td>If other (specify):</td>
+                    <td colspan="2">
+                        <input type="text" id="otherPhysicianInput" placeholder="Enter name">
+                        <span id="message" style="color: yellow; font-size: 14px; display: none;">Please enter the physician's name</span>
+                    </td>
+                </tr>
+                
+                <script>
+                    function checkPhysician() {
+                        var select = document.getElementById("physicianSelect");
+                        var otherRow = document.getElementById("otherPhysicianRow");
+                        var message = document.getElementById("message");
+                        var input = document.getElementById("otherPhysicianInput");
+                
+                        if (select.value === "Other") {
+                            otherRow.style.display = "table-row";
+                            input.focus();
+                            message.style.display = "inline"; // Show message
+                        } else {
+                            otherRow.style.display = "none";
+                            message.style.display = "none"; // Hide message
+                        }
+                    }
+                </script>
+                
+                <tr>
+                    <td rowspan="7">5) 1 Minute APGAR Score: Each score must be 0, 1, or 2</td>
+                </tr>
+                <tr>
+                    <td><label>Activity:</label></td>
+                    <td><input type="number" class="small-input apgar-input" value="0"></td>
+                </tr>
+                <tr>
+                    <td><label>Pulse:</label></td>
+                    <td><input type="number" class="small-input apgar-input" value="0"></td>
+                </tr>
+                <tr>
+                    <td><label>Grimace (Reflex, Irritability):</label></td>
+                    <td><input type="number" class="small-input apgar-input"  value="0"></td>
+                </tr>
+                <tr>
+                    <td><label>Appearance (Skin Color):</label></td>
+                    <td><input type="number" class="small-input apgar-input"  value="0"></td>
+                </tr>
+                <tr>
+                    <td><label>Respiration:</label></td>
+                    <td><input type="number" class="small-input apgar-input" value="0"></td>
+                </tr>
+                <tr>
+                    <td><b>TOTAL</b></td>
+                    <td><input type="number" id="totalScore" class="small-input" readonly></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <span id="errorMessage" style="color: yellow; font-size: 14px; display: none;">Invalid value! Please enter 0, 1, or 2.</span>
+                    </td>
+                </tr>
+                
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                        const inputs = document.querySelectorAll(".apgar-input");
+                        const totalScore = document.getElementById("totalScore");
+                        const errorMessage = document.getElementById("errorMessage");
+                
+                        function updateTotal() {
+                            let total = 0;
+                            let valid = true;
+                
+                            inputs.forEach(input => {
+                                let value = parseInt(input.value);
+                                if (isNaN(value) || value < 0 || value > 2) {
+                                    valid = false;
+                                } else {
+                                    total += value;
+                                }
+                            });
+                
+                            if (!valid) {
+                                errorMessage.style.display = "inline"; // Show error message
+                            } else {
+                                errorMessage.style.display = "none";  // Hide error message
+                                totalScore.value = total; // Update total score
+                            }
+                        }
+                
+                        inputs.forEach(input => {
+                            input.addEventListener("input", function () {
+                                if (this.value < 0 || this.value > 2 || isNaN(this.value)) {
+                                    this.value = ""; // Clear invalid input
+                                }
+                                updateTotal();
+                            });
+                        });
+                
+                        updateTotal(); // Calculate total initially
+                    });
+                </script>
+                
+                <tr>
+                    <td>6) Birth weight (gms):<br/>Weights must be >= 1200 gms.</td>
+                    <td colspan="2"><input type="number" min="1200" style="width: 100px;"></td>
+                </tr>
+                <tr>
+                    <td>7) Parental Consent (required):</td>
+                    <td colspan="2"><input type="checkbox"></td>
+                </tr>
+            </table>
+            <div class="button-group">
+                <button type="button">Register</button>
+                <button type="button" onclick="location.reload()">Reload Page</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

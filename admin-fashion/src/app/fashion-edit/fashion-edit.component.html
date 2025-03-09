@@ -1,0 +1,58 @@
+<div class="container">
+    <h2>{{ isAddMode ? 'Add Fashion Item' : 'Edit Fashion Item' }}</h2>
+  
+    <form [formGroup]="fashionForm" (ngSubmit)="onSubmit()">
+      <div class="form-group" *ngIf="!isAddMode">
+        <label for="id">ID</label>
+        <input type="text" class="form-control" id="id" formControlName="_id" readonly>
+      </div>
+  
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" formControlName="title" 
+          [ngClass]="{ 'is-invalid': submitted && f['title'].errors }">
+        <div *ngIf="submitted && f['title'].errors" class="invalid-feedback">
+          <div *ngIf="f['title'].errors['required']">Title is required</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="details">Details</label>
+        <div class="ngx-editor-wrapper" [ngClass]="{ 'is-invalid': submitted && f['details'].errors }">
+          <ngx-editor-menu [editor]="editor" [toolbar]="toolbar"></ngx-editor-menu>
+          <ngx-editor
+            [editor]="editor"
+            formControlName="details"
+            [placeholder]="'Enter fashion details here...'"
+          ></ngx-editor>
+        </div>
+        <div *ngIf="submitted && f['details'].errors" class="invalid-feedback">
+          <div *ngIf="f['details'].errors['required']">Details are required</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="thumbnail">Thumbnail URL</label>
+        <input type="text" class="form-control" id="thumbnail" formControlName="thumbnail"
+          [ngClass]="{ 'is-invalid': submitted && f['thumbnail'].errors }">
+        <div *ngIf="submitted && f['thumbnail'].errors" class="invalid-feedback">
+          <div *ngIf="f['thumbnail'].errors['required']">Thumbnail URL is required</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="style">Style</label>
+        <input type="text" class="form-control" id="style" formControlName="style"
+          [ngClass]="{ 'is-invalid': submitted && f['style'].errors }">
+        <div *ngIf="submitted && f['style'].errors" class="invalid-feedback">
+          <div *ngIf="f['style'].errors['required']">Style is required</div>
+        </div>
+      </div>
+  
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
+      </div>
+    </form>
+  </div>
+  

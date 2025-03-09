@@ -29,11 +29,20 @@ export class FashionUpdateComponent {
     }
   }
   
-  putFashion()
-  {
-  this._service.putFashion(this.fashion).subscribe({
-  next:(data)=>{this.fashion=data},
-  error:(err)=>{this.errMessage=err}
-  })
+  putFashion() {
+    console.log("Updating fashion:", this.fashion); // ✅ Kiểm tra dữ liệu trước khi gửi
+  
+    this._service.putFashion(this.fashion).subscribe({
+      next: (data) => {
+        console.log("Response from API:", data); // ✅ In phản hồi từ API
+        this.fashion = data;
+        alert("Cập nhật thành công! ✅");
+      },
+      error: (err) => {
+        console.error("Error from API:", err); // ✅ Kiểm tra lỗi
+        this.errMessage = "Lỗi khi cập nhật! 😢";
+      }
+    });
   }
+  
 }

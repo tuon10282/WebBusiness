@@ -21,12 +21,6 @@
             text-align: left;
         }
 
-        tr:hover {
-            background-color: yellow;
-        }
-        tr:link {
-            background-color: rgb(255, 255, 255);
-        }
     </style>
 </head>
 <body>
@@ -113,7 +107,20 @@
             yearSelect.appendChild(option);
         }
     };
-
+    //Hover
+    function addRowHoverEffect() {
+    const rows = document.querySelectorAll("#membersTable tbody tr");
+    
+    rows.forEach(row => {
+        row.addEventListener("mouseover", function() {
+            this.style.backgroundColor = "yellow";
+        });
+        
+        row.addEventListener("mouseout", function() {
+            this.style.backgroundColor = "white";
+        });
+    });
+}
     // Register button functionality
     function register() {
             // Lấy dữ liệu từ form
@@ -171,6 +178,15 @@
 
             // Thêm hàng mới vào bảng
             tbody.appendChild(tr);
+                // Thêm hiệu ứng hover cho hàng mới
+            tr.addEventListener("mouseover", function() {
+                this.style.backgroundColor = "yellow";
+            });
+
+            tr.addEventListener("mouseout", function() {
+                this.style.backgroundColor = "white";
+            });
+
 
             // Reset form
             document.getElementById("registrationForm").reset();

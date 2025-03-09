@@ -13,7 +13,11 @@
         <td>{{fashion.fashion_subject}}</td>
         <td>{{fashion.fashion_detail}} </td>
         <td>
-        <img src="{{fashion.fashion_image}}" width="100px" height="100px">
+        <img src="{{fashion.fashion_image}}" width="100px" height="100px"
+        style="cursor: pointer;"
+
+        (click)="viewDetail(fashion)"
+        >
         </td>
         </tr>
     </tbody>

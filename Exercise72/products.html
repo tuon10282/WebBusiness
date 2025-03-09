@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Danh sách sản phẩm</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background-color: #348a14;
+            color: white;
+            font-weight: bold;
+            padding: 8px;
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+
+        /* Định dạng cột Product ID */
+        td:first-child {
+            color: red;
+            font-weight: bold;
+        }
+
+        /* Định dạng Product Name */
+        td:nth-child(2) {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>List of Products</h1>
+    <table>
+        <thead>
+            <tr>
+                <th colspan="4" style="color:black; background-color: rgb(253, 203, 78);">List of Products</th>
+            </tr>
+            <tr>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+            </tr>
+        </thead>
+        <tbody id="tbodyproduct"></tbody>
+    </table>
+
+    <script>
+        var productsData = {
+            "Products": [
+                {
+                    "ProductID": "p123",
+                    "ProductName": "DELL Inspiron 14NR",
+                    "Quantity": 100,
+                    "UnitPrice": 150000
+                },
+                {
+                    "ProductID": "p456",
+                    "ProductName": "HP Inspiron 113",
+                    "Quantity": 130,
+                    "UnitPrice": 140000
+                }
+            ]
+        };
+
+        var tbodyproduct = document.getElementById("tbodyproduct");
+
+        for (var i = 0; i < productsData.Products.length; i++) {
+            var product = productsData.Products[i];
+
+            var trproduct = document.createElement("tr");
+
+            var tdid = document.createElement("td");
+            tdid.innerHTML = product.ProductID;
+            trproduct.appendChild(tdid);
+
+            var tdproductname = document.createElement("td");
+            tdproductname.innerHTML = product.ProductName;
+            trproduct.appendChild(tdproductname);
+
+            var tdquantity = document.createElement("td");
+            tdquantity.innerHTML = product.Quantity;
+            trproduct.appendChild(tdquantity);
+
+            var tdprice = document.createElement("td");
+            tdprice.innerHTML = product.UnitPrice;
+            trproduct.appendChild(tdprice);
+
+            tbodyproduct.appendChild(trproduct);
+        }
+    </script>
+</body>
+</html>

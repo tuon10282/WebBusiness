@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu with JavaScript</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #container {
+            border: 1px solid blue;
+            background: gray;
+            float:left;
+            top: 60px;
+            text-indent:0px;
+        }
+        ul {
+            list-style-type: none;
+            display: flex;
+        }
+        ul li {
+            position: relative;
+            margin-right: 20px;
+        }
+        ul li a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            padding: 8px 12px;
+            display: block;
+        }
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            border: 1px solid green;
+            display: none;
+            width: 150px;
+        }
+        .submenu li {
+            width: 100%;
+            border-bottom: 1px solid green;
+        }
+        .submenu li a {
+            padding: 8px;
+            display: block;
+        }
+        .active {
+            background-color: orange !important;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <ul>
+            <li><a href="#">HOME</a></li>
+            <li><a href="#">HTML</a></li>
+            <li class="has-submenu">
+                <a href="#">CSS</a>
+                <ul class="submenu">
+                    <li><a href="#">Basic CSS</a></li>
+                    <li><a href="#">Graphic UI</a></li>
+                    <li><a href="#">Advanced CSS</a></li>
+                </ul>
+            </li>
+            <li class="has-submenu">
+                <a href="#">JAVASCRIPT</a>
+                <ul class="submenu">
+                    <li><a href="#">LESSON 01</a></li>
+                    <li><a href="#">LESSON 02</a></li>
+                    <li><a href="#">LESSON 03</a></li>
+                </ul>
+            </li>
+            <li><a href="#">HTML DOM</a></li>
+            <li><a href="#">ASP MVC</a></li>
+        </ul>
+    </div>
+    <script>
+        function showSubmenu() {
+            document.querySelectorAll(".has-submenu").forEach(item => {
+                item.addEventListener("mouseover", () => {
+                    let submenu = item.querySelector(".submenu");
+                    if (submenu) submenu.style.display = "block";
+                });
+                item.addEventListener("mouseout", () => {
+                    let submenu = item.querySelector(".submenu");
+                    if (submenu) submenu.style.display = "none";
+                });
+            });
+        }
+
+        function highlightMenu() {
+            const menuItems = document.querySelectorAll("#container li a");
+            menuItems.forEach(item => {
+                item.addEventListener("mouseover", () => {
+                    item.classList.add("active");
+                });
+                item.addEventListener("mouseout", () => {
+                    item.classList.remove("active");
+                });
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            showSubmenu();
+            highlightMenu();
+        });
+    </script>
+</body>
+</html>

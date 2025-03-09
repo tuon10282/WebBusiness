@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        input {
+            margin: 5px;
+            padding: 5px;
+        }
+        button {
+            margin: 5px;
+            padding: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>Web Node</h3>
+    <ul id="webNode">
+        <li>Data base</li>
+        <li>Web1</li>
+        <li>Web2</li>
+    </ul>
+
+    <div>
+        <button onclick="addNode()">Add Node</button>
+        <input type="text" id="content" placeholder="Content">
+        <input type="number" id="position" placeholder="Position (optional)">
+    </div>
+
+    <div>
+        <button onclick="removeNode()">Remove Node</button>
+        <input type="number" id="removePosition" placeholder="Position">
+    </div>
+
+    <div>
+        <button onclick="modifyNode()">Modify Node</button>
+        <input type="text" id="newContent" placeholder="New Content">
+        <input type="number" id="modifyPosition" placeholder="Position">
+    </div>
+
+    <script>
+        function addNode() {
+            let content = document.getElementById("content").value;
+            let position = document.getElementById("position").value;
+            let ul = document.getElementById("webNode");
+
+            if (!content) {
+                alert("Please enter content!");
+                return;
+            }
+
+            let li = document.createElement("li");
+            li.textContent = content;
+
+            if (position && position > 0 && position <= ul.children.length) {
+                ul.insertBefore(li, ul.children[position - 1]);
+            } else {
+                ul.appendChild(li);
+            }
+
+            document.getElementById("content").value = "";
+            document.getElementById("position").value = "";
+        }
+
+        function removeNode() {
+            let position = document.getElementById("removePosition").value;
+            let ul = document.getElementById("webNode");
+
+            if (position && position > 0 && position <= ul.children.length) {
+                ul.removeChild(ul.children[position - 1]);
+            } else {
+                alert("Invalid position!");
+            }
+
+            document.getElementById("removePosition").value = "";
+        }
+
+        function modifyNode() {
+            let newContent = document.getElementById("newContent").value;
+            let position = document.getElementById("modifyPosition").value;
+            let ul = document.getElementById("webNode");
+
+            if (!newContent) {
+                alert("Please enter new content!");
+                return;
+            }
+
+            if (position && position > 0 && position <= ul.children.length) {
+                ul.children[position - 1].textContent = newContent;
+            } else {
+                alert("Invalid position!");
+            }
+
+            document.getElementById("newContent").value = "";
+            document.getElementById("modifyPosition").value = "";
+        }
+    </script>
+
+</body>
+</html>

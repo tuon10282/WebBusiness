@@ -1,0 +1,82 @@
+body {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: hsl(0, 0%, 0%);
+    width: 210mm;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+.content {
+    display: flex;
+    flex-direction: row; /* Hiển thị theo hàng ngang */
+}
+.wrap-left, .wrap-right {
+    width: 66mm; /* Kích thước vùng nơ */
+    background-image: url('images/Wrap.jpg');
+    background-repeat: repeat-y;
+    background-position: center;
+}
+
+.sidebar {
+    width: 30%; /* Sidebar chiếm 10% */
+    background-color: black;
+    color: white;
+    padding: 10px;
+}
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+.sidebar li {
+    margin: 5px 0;
+    color:rgb(20, 190, 11)
+}
+.sidebar a {
+    text-decoration: none; /* Bỏ gạch chân */
+    color: rgb(20, 190, 11); /* Màu chữ mặc định */
+    transition: color 0.3s ease-in-out; /* Hiệu ứng mượt khi đổi màu */
+}
+
+/* Hiệu ứng khi di chuột vào liên kết */
+.sidebar a:hover {
+    color: red; /* Chuyển màu thành đỏ */
+}
+
+.main-content {
+    width: 100%; /* Main content chiếm 90% */
+    text-align: center;
+    background-color: white;
+}
+#bgyellow {
+    background-color: yellow;
+    height: 50px;
+    display: flex;         /* Kích hoạt flexbox */
+    align-items: center;   /* Căn giữa theo chiều dọc */
+    justify-content: center; /* Căn giữa theo chiều ngang (tùy chọn) */
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    }
+.left
+{
+    width:50%;
+    text-align: left;
+    float:left;
+    margin-left: 5px;
+}
+.right
+{
+    width:50%;
+    margin-right: 5px;
+    text-align: left;
+    float:right;
+
+}
+#green_title
+{
+    color: green;
+    font-size: 20px;
+    font-weight: bold;
+}
+.highlight{
+    color:red;
+}

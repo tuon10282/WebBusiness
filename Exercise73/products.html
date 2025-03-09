@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Danh sách sản phẩm</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background-color: #4d6413; /* Màu xanh lá đậm */
+            color: white;
+            font-weight: bold;
+            padding: 8px;
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+
+        /* Định dạng cột Product Code */
+        td:first-child {
+            color: red;
+            font-weight: bold;
+        }
+
+        /* Định dạng Product Name */
+        td:nth-child(2) {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>List of Products</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Product Code</th>
+                <th>Product Name</th>
+                <th>Unit Price</th>
+            </tr>
+        </thead>
+        <tbody id="tbodyproduct"></tbody>
+    </table>
+
+    <script>
+        var products = [
+            { code: "sp1", name: "Cocacola", price: 15000 },
+            { code: "sp2", name: "Pepsi", price: 25000 },
+            { code: "sp3", name: "Sting", price: 17000 }
+        ];
+
+        var tbodyproduct = document.getElementById("tbodyproduct");
+
+        for (var i = 0; i < products.length; i++) {
+            var product = products[i];
+
+            var trproduct = document.createElement("tr");
+
+            var tdcode = document.createElement("td");
+            tdcode.innerHTML = product.code;
+            trproduct.appendChild(tdcode);
+
+            var tdname = document.createElement("td");
+            tdname.innerHTML = product.name;
+            trproduct.appendChild(tdname);
+
+            var tdprice = document.createElement("td");
+            tdprice.innerHTML = product.price;
+            trproduct.appendChild(tdprice);
+
+            tbodyproduct.appendChild(trproduct);
+        }
+    </script>
+</body>
+</html>

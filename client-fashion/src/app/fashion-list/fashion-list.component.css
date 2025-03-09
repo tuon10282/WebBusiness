@@ -1,0 +1,190 @@
+/* fashion-list.component.css */
+
+/* Container adjustments for centering */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 15px;
+    text-align: center;
+  }
+  
+  /* Search bar styling - centered with inline layout */
+  .search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    max-width: 600px;
+  }
+  
+  .form-control {
+    border-radius: 0;
+    border: 1px solid #ddd;
+    padding: 8px 15px;
+    height: 42px;
+    flex-grow: 1;
+  }
+  
+  .btn-dark {
+    border-radius: 0;
+    text-transform: uppercase;
+    font-weight: 600;
+    height: 42px;
+    background-color: #000;
+    margin-left: 10px;
+    width: auto !important;
+  }
+  
+  /* Style category headers */
+  h3 {
+    font-family: Arial, sans-serif;
+    font-weight: 400;
+    letter-spacing: 1px;
+    font-size: 18px;
+    color: #333;
+    position: relative;
+    text-align: center;
+    margin: 30px 0;
+  }
+  
+  h3:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 40px;
+    height: 1px;
+    background-color: #ddd;
+    transform: translateX(-50%);
+  }
+  
+  /* Fashion grid layout - horizontal album style */
+  .fashion-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 15px 0;
+    margin: 0 -10px;
+    justify-content: center;
+  }
+  
+  /* Card styling for album-like appearance */
+  .fashion-item {
+    flex: 0 0 auto;
+    width: 250px;
+    margin: 0 10px;
+  }
+  
+  .card {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    transition: transform 0.3s ease;
+    margin-bottom: 25px;
+    text-align: center;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card-img-top {
+    border-radius: 0;
+    object-fit: cover;
+    height: 280px; /* Larger images */
+    width: 100%;
+  }
+  
+  .card-body {
+    padding: 15px 5px;
+  }
+  
+  .card-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  /* Hide description, showing only title */
+  .card-text {
+    display: none;
+  }
+  
+  /* Camera icon button */
+  .btn-light {
+    background-color: rgba(255, 255, 255, 0.8);
+    width: 35px;
+    height: 35px;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }
+  
+  .bi-camera {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  /* Loading spinner */
+  .spinner-border {
+    width: 3rem;
+    height: 3rem;
+    color: #000;
+    margin: 30px auto;
+  }
+  
+  /* Error message */
+  .alert-danger {
+    border-radius: 0;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: none;
+    padding: 15px;
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: center;
+  }
+  
+  /* Custom scrollbar for horizontal scrolling */
+  .fashion-grid::-webkit-scrollbar {
+    height: 6px;
+  }
+  
+  .fashion-grid::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  .fashion-grid::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  .fashion-grid::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  
+  /* Media queries for responsiveness */
+  @media (max-width: 767px) {
+    .search-container {
+      flex-direction: column;
+    }
+    
+    .btn-dark {
+      margin-left: 0;
+      margin-top: 10px;
+      width: 100% !important;
+    }
+    
+    .fashion-item {
+      width: 200px;
+    }
+    
+    .card-img-top {
+      height: 220px;
+    }
+  }
